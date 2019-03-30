@@ -1,0 +1,7 @@
+[user]
+	name = lcolok
+	email = 425311101@qq.com
+[push]
+	default = matching
+[core]
+	excludesfile = ~/.gitignore_global
