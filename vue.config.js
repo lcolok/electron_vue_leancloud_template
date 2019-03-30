@@ -16,6 +16,9 @@ module.exports = {
       fallbackLocale: 'en',
       localeDir: 'locales',
       enableInSFC: true
+    },
+    webpackBundleAnalyzer: {
+      openAnalyzer: false
     }
   }
 }
