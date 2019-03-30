@@ -3,3 +3,4 @@
 .leancloud/
 node_modules/
 src/
+dist_electron/

@@ -5,10 +5,7 @@ module.exports = {
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
-
-  css: {
-    sourceMap: true
-  },
+  css: undefined,
 
   pluginOptions: {
     i18n: {
@@ -17,5 +14,7 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: true
     }
-  }
+  },
+
+  lintOnSave: undefined
 }
