@@ -13,7 +13,7 @@ require('./cloud');
 var app = express();
 
 // 设置模板引擎
-app.set('views', path.join(__dirname, 'docs'));
+app.set('views', path.join(__dirname, 'dist'));
 var ejs = require('ejs');  //我是新引入的ejs插件,让express也能够加载html
 app.engine('html', ejs.__express);
 app.set('view engine', 'html');
@@ -27,7 +27,7 @@ app.use(AV.express());
 
 app.enable('trust proxy');
 app.use(AV.Cloud.HttpsRedirect());// 强制重定向到 HTTPS
-app.use(express.static(path.join(__dirname, 'docs')));//利用 Express 托管静态文件
+app.use(express.static(path.join(__dirname, 'dist')));//利用 Express 托管静态文件
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
