@@ -4,3 +4,10 @@
 node_modules/
 src/
 dist_electron/
+docs/
+public/
+.env
+.gitconfig
+.gitignore
+.gitignore_global
+babel.config.js
