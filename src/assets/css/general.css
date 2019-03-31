@@ -1,0 +1,23 @@
+[v-cloak] {
+    display: none;
+}
+
+.wrap {
+    position: relative;
+    height: 18px;
+  }
+  .wrap button {
+    position: absolute;
+  }
+  .no-mode-fade-enter-active, .no-mode-fade-leave-active {
+    transition: all 1s
+  }
+  .no-mode-fade-enter, .no-mode-fade-leave-active {
+    opacity: 0;
+  }
+  .no-mode-fade-enter {
+    transform: translateX(31px);
+  }
+  .no-mode-fade-leave-active {
+    transform: translateX(-31px);
+  }

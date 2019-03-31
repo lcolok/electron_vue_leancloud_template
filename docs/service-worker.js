@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.d60a7e8bf9198139457bd76d7739dbf3.js"
+  "precache-manifest.250f1fa6cbff94e68d96b0ffb4fd518a.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "electron_vue_leancloud_template"});

@@ -73,7 +73,7 @@ app.use(function(err, req, res, next) {
     // 如果是开发环境，则将异常堆栈输出到页面，方便开发调试
     error = err;
   }
-  res.render('error', {
+  res.render('index', {
     message: err.message,
     error: error
   });
