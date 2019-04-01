@@ -38,6 +38,9 @@ const router = new Router({
       path: '*',
       name: 'NotFound',
       component: NotFound,
+      meta: {
+        title: '404 Not Found'
+      }
     },
   ]
 })
