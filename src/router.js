@@ -19,8 +19,15 @@ const router = new Router({
       }
     },
     {
-      path: '/map',
-      name: 'RouterMap',
+      path: '/mescroll',
+      name: 'Mescroll',
+      meta: {
+        title: 'mescroll测试页'
+      },
+      component: () => {
+        import('./views/Mescroll.vue');
+
+      }
     },
     {
       path: '/about',
