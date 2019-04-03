@@ -9,7 +9,7 @@ import Vue from "vue";
 Vue.component("lottie", lottie);
 Vue.config.productionTip = false
 
-import AV from 'leancloud-storage'
+import AV from 'leanengine'
 AV.init({
   appId: 'eiFnyWWSdKM4YOW6jdrc77AP-MdYXbMMI',
   appKey: 'JWmRjxc5E33n2lebvMDhURsH',
