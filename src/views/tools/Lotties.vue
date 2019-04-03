@@ -45,11 +45,11 @@ export default {
     });
   },
   beforeCreate() {
-    var lotteURL = this.$route.query.lotteURL;
-    if (lotteURL) {
+    var lottieURL = this.$route.query.lottieURL;
+    if (lottieURL) {
       console.log(
-        this.$AV.Cloud.run("getLotte", {
-          lotteURL: lotteURL
+        this.$AV.Cloud.run("getLottie", {
+          lottieURL: lottieURL
         })
       );
     }
