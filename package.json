@@ -28,6 +28,7 @@
     "lodash": "^4.17.11",
     "lottie-web": "^5.5.0",
     "mescroll.js": "^1.4.1",
+    "require-all": "^3.0.0",
     "vue": "^2.6.6",
     "vue-i18n": "^8.0.0",
     "vue-lottie": "^0.2.1",
