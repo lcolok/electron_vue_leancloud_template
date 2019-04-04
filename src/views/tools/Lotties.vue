@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <lottie
+      v-model="lottie"
       :options="defaultOptions"
       :height="400"
       :width="400"
       v-on:animCreated="handleAnimation"
     />
-    <div>
+    <!--     <div>
       <p>Speed: x{{animationSpeed}}</p>
       <input
         type="range"
@@ -20,7 +21,7 @@
     </div>
     <button v-on:click="stop">stop</button>
     <button v-on:click="pause">pause</button>
-    <button v-on:click="play">play</button>
+    <button v-on:click="play">play</button>-->
   </div>
 </template>
 
@@ -28,59 +29,36 @@
 // import Lottie from './lottie.vue';
 
 import * as animationData from "./assets/pinjump.json";
-import axios from "axios";
-
-
 
 export default {
   name: "app",
-  beforeRouteEnter(to, from, next) {
-    next(VM => {
-      // 当前是否有用户登录
-      if (VM.$AV.User.current()) {
-        console.log("当前登录");
-        // 跳转到首页
-        VM.$router.push("/");
-      } else {
-        console.log("当前未登录");
-      }
-    });
-  },
   beforeCreate() {
-    var lottieURL = this.$route.query.lottieURL;
-    if (lottieURL) {
-      console.log(
-        this.$AV.Cloud.run("getLottie", {
-          lottieURL: lottieURL
-        })
-      );
+    var _this = this;
+    var url = this.$route.query.url;
+    console.log(url);
+    if (url) {
+      this.$AV.Cloud.run("getLottieJSON", {
+        url: url
+      }).then(resp => {
+        console.log(_this.defaultOptions);
+        _this.defaultOptions = { animationData: JSON.parse(resp) };
+        console.log(_this.defaultOptions);
+        _this.anim.registerAnimation();
+        console.log(_this.anim);
+        _this.handleAnimation();
+      });
     }
   },
   data() {
     return {
       defaultOptions: { animationData: animationData.default },
-      animationSpeed: 1
+      animationSpeed: 1,
+      lottie: false
     };
   },
   methods: {
     handleAnimation: function(anim) {
       this.anim = anim;
-    },
-
-    stop: function() {
-      this.anim.stop();
-    },
-
-    play: function() {
-      this.anim.play();
-    },
-
-    pause: function() {
-      this.anim.pause();
-    },
-
-    onSpeedChange: function() {
-      this.anim.setSpeed(this.animationSpeed);
     }
   }
 };

@@ -31,7 +31,7 @@ async function getLottieJSON(request) {
 
 
 require('../tools/identifier.js').run({
-    rules: 'vscode||local',
+    rules: '!vscode||local',
     func: async () => {
 
         var feedback = await getLottieJSON({
