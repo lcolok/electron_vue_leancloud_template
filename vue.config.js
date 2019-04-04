@@ -5,7 +5,9 @@ module.exports = {
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
-  css: undefined,
+  css: {
+    extract: false
+  },
 
   pluginOptions: {
     i18n: {

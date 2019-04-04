@@ -1,34 +1,57 @@
+
+<style>
+html {
+  overflow: -moz-hidden-unscrollable;
+  height: 100%;
+  width:100%;
+
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  object-fit: contain;
+  -ms-overflow-style: none;
+  height: 100%;
+  width: calc(100vw + 18px);
+  overflow: auto;
+}
+
+.fill {
+  object-fit: fill;
+}
+.contain {
+  object-fit: contain;
+}
+.cover {
+  object-fit: cover;
+}
+.none {
+  object-fit: none;
+}
+.scale-down {
+  object-fit: scale-down;
+}
+
+.box {
+  width: 160px;
+  height: 160px;
+  margin: 10px 0 20px;
+  background-color: #fd1100;
+  overflow: hidden;
+  resize: both;
+}
+</style>
+
 <template>
-  <div id="app">
-    <lottie
-      v-model="lottie"
-      :options="defaultOptions"
-      :height="400"
-      :width="400"
-      v-on:animCreated="handleAnimation"
-    />
-    <!--     <div>
-      <p>Speed: x{{animationSpeed}}</p>
-      <input
-        type="range"
-        value="1"
-        min="0"
-        max="3"
-        step="0.5"
-        v-on:change="onSpeedChange"
-        v-model="animationSpeed"
-      >
-    </div>
-    <button v-on:click="stop">stop</button>
-    <button v-on:click="pause">pause</button>
-    <button v-on:click="play">play</button>-->
-  </div>
+  <div class="contain" ref="lavContainer"></div>
 </template>
 
-<script>
-// import Lottie from './lottie.vue';
 
-import * as animationData from "./assets/pinjump.json";
+<script>
+import lottie from "lottie-web";
 
 export default {
   name: "app",
@@ -40,56 +63,23 @@ export default {
       this.$AV.Cloud.run("getLottieJSON", {
         url: url
       }).then(resp => {
-        console.log(_this.defaultOptions);
-        _this.defaultOptions = { animationData: JSON.parse(resp) };
-        console.log(_this.defaultOptions);
-        _this.anim.registerAnimation();
-        console.log(_this.anim);
-        _this.handleAnimation();
+        this.anim = lottie.loadAnimation({
+          container: this.$refs.lavContainer,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: JSON.parse(resp),
+          rendererSettings: {
+            preserveAspectRatio: "xMidYMid meet",
+            hideOnTransparent: true
+          }
+        });
       });
     }
   },
   data() {
-    return {
-      defaultOptions: { animationData: animationData.default },
-      animationSpeed: 1,
-      lottie: false
-    };
+    return {};
   },
-  methods: {
-    handleAnimation: function(anim) {
-      this.anim = anim;
-    }
-  }
+  methods: {}
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1,
-h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>

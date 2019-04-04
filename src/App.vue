@@ -1,9 +1,4 @@
 
-<style scoped>
-@import "/assets/css/general.css";
-@import "../node_modules/animate.css/animate.css";
-</style>
-
 
 <template v-cloak>
   <div id="app">

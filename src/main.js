@@ -10,10 +10,17 @@ Vue.component("lottie", lottie);
 Vue.config.productionTip = false
 
 import AV from 'leancloud-storage'
-AV.init({
+
+//以下这个为美国节点
+/* AV.init({
   appId: 'eiFnyWWSdKM4YOW6jdrc77AP-MdYXbMMI',
   appKey: 'JWmRjxc5E33n2lebvMDhURsH',
+}); */
+AV.init({
+  appId: '1oHwyqv3qyzH6hFsjCJULJ31-gzGzoHsz',
+  appKey: 'g7G4uPGRbJc5GaK4yn36FqkC',
 });
+
 Vue.prototype.$AV = AV;
 
 // Vue.prototype.$Vue = Vue;
