@@ -357,7 +357,7 @@ async function updateShimo(request) {
             chosenClass: chosenClass,
         }
 
-        console.log(params);
+        // console.log(params);
 
         save2DataBase(params);
         feedback = [params];

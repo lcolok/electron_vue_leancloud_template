@@ -16,7 +16,7 @@ function getLottie(request) {
             var query = new AV.Query('lottieJSON');
             query.equalTo('lottieURL', lottieURL);
             query.find().then((results) => {
-                
+
                 if (results.length > 0) {
                     resolve(results[0].get('uploaderURL'))//返回匹配到lottieURL的第一项
                 } else {
@@ -42,14 +42,19 @@ function getLottie(request) {
 
 
 
-                    Promise.all([titlePromise, lottieJsonPromise]).then(results => {
+                    Promise.all([titlePromise, lottieJsonPromise]).then(async (results) => {
                         $ = cheerio.load(results[0].data);
                         var title = $('h1.text-2xl').text() + '.json';
                         // var data = results[1].data;
                         // console.log(data);
                         var data = JSON.stringify(results[1].data);
-                        var feedback = AV.Cloud.run('postFormShimo', { class: 'lottieJSON', data: data, filename: title, lottieURL: lottieURL });
-                        resolve(feedback);
+                        var feedback = await AV.Cloud.run('postFormShimo', {
+                            class: 'lottieJSON',
+                            data: data,
+                            filename: title,
+                            lottieURL: lottieURL
+                        });
+                        resolve(feedback[0].uploaderURL);
                     }).catch(function (e) {
                         console.log(e);
                     });
@@ -70,11 +75,11 @@ function getLottie(request) {
 
 
 require('../tools/identifier.js').run({
-    rules: 'vscode||local',
+    rules: '!vscode||local',
     func: async () => {
         var feedback = await getLottie({
             params: {
-                lottieURL: `https://lottiefiles.com/5306-rocket-funk`
+                lottieURL: `https://lottiefiles.com/5174-stream-swipe-logo`
             }
         })
         console.log(feedback);
