@@ -30,6 +30,8 @@
 import * as animationData from "./assets/pinjump.json";
 import axios from "axios";
 
+
+
 export default {
   name: "app",
   beforeRouteEnter(to, from, next) {
