@@ -11,3 +11,4 @@ public/
 .gitignore
 .gitignore_global
 babel.config.js
+vue.config.js
