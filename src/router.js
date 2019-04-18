@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import NotFound from './views/NotFound.vue'
-import lotties from './views/tools/Lotties.vue'
+import Home from './vue/Home.vue'
+import NotFound from './vue/NotFound.vue'
+import lotties from './vue/tools/Lotties.vue'
+import Upload from './vue/Upload.vue'
 
 Vue.use(Router)
 
@@ -19,13 +20,21 @@ const router = new Router({
       }
     },
     {
+      path: '/u',
+      name: 'upload',
+      component: Upload,
+      meta: {
+        title: '七牛上传'
+      }
+    },
+    {
       path: '/mescroll',
       name: 'Mescroll',
       meta: {
         title: 'mescroll测试页'
       },
       component: () => {
-        import('./views/Mescroll.vue');
+        import('./vue/Mescroll.vue');
 
       }
     },
@@ -46,7 +55,7 @@ const router = new Router({
       //这将为该路由生成一个单独的块(大约.[hash].js)
       // which is lazy-loaded when the route is visited.
       //当访问路由时，它会进行懒加载加载。
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "about" */ './vue/About.vue')
     },
     {
       /* Not Found 路由，必须是最后一个路由 */
